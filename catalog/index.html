@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Agent Library</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Curated Viewer</p>
+          <p class="hero-text">
+            Browse the library, move between curated pages, and open agents into a focused summary view.
+          </p>
+        </div>
+        <div class="hero-meta" id="heroStats"></div>
+      </header>
+
+      <nav class="menu-bar" aria-label="Viewer pages">
+        <button class="menu-link" type="button" data-page="dashboard">Dashboard</button>
+        <button class="menu-link" type="button" data-page="featured">Featured 20</button>
+        <button class="menu-link" type="button" data-page="library">Full Library</button>
+        <button class="menu-link" type="button" data-page="compare">Compare Queue</button>
+      </nav>
+
+      <main class="workspace-layout">
+        <section class="catalog-panel">
+          <div class="panel-header">
+            <div>
+              <h2 id="panelTitle">Dashboard</h2>
+              <p class="panel-copy" id="panelCopy">Search, filter, and shape the library from here.</p>
+            </div>
+            <div class="result-badge" id="resultsMeta">0 results</div>
+          </div>
+
+          <div class="search-row">
+            <label class="search-field">
+              <span class="sr-only">Search agents</span>
+              <input id="searchInput" type="search" placeholder="Search by name, category, mode, language, or workflow" />
+            </label>
+            <button id="clearFiltersButton" class="ghost-button" type="button">Clear</button>
+          </div>
+
+          <div class="filter-strip">
+            <details class="filter-group filter-accordion">
+              <summary class="filter-summary">
+                <span class="filter-label">Quick view</span>
+              </summary>
+              <div class="filter-body">
+                <div id="presetFilters" class="chip-row"></div>
+              </div>
+            </details>
+
+            <div class="filter-group">
+              <p class="filter-label">Category</p>
+              <div id="categoryFilters" class="chip-row"></div>
+            </div>
+
+            <details class="filter-group filter-accordion">
+              <summary class="filter-summary">
+                <span class="filter-label">Tier</span>
+              </summary>
+              <div class="filter-body">
+                <div id="tierFilters" class="chip-row"></div>
+              </div>
+            </details>
+
+            <details class="filter-group filter-accordion">
+              <summary class="filter-summary">
+                <span class="filter-label">Mode</span>
+              </summary>
+              <div class="filter-body">
+                <div id="modeFilters" class="chip-row"></div>
+              </div>
+            </details>
+
+            <div class="filter-group">
+              <p class="filter-label">Sandbox</p>
+              <div id="sandboxFilters" class="chip-row"></div>
+            </div>
+
+            <div class="filter-group">
+              <p class="filter-label">Sort</p>
+              <label class="select-wrap">
+                <select id="sortSelect" class="select-input">
+                  <option value="rank">Featured first</option>
+                  <option value="name">Name</option>
+                  <option value="category">Category</option>
+                  <option value="write">Write-capable first</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="viewer-panel" id="viewerPanel">
+          <div class="viewer-status hidden" id="viewerStatus"></div>
+          <div id="viewerContent"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data/top-agents.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
